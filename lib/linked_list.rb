@@ -31,5 +31,21 @@ class LinkedList
     count
   end
   
+  def to_string
+    return '' if @head.nil? #If the list is empty, return an empty string
+    node = @head #temp variable that starts head of linked list
+    result = "#{node.data}" #Start with the data from the head node
+    while node.next_node #initiates while loop as long has 'node' has a next_node
+      node = node.next_node #updates node to point to the new node
+      result += " #{node.data}" #adds the data from the current 'node' to the 'result ' string sperated by a space
+    end
+    result
+  end
+
+  
+    
+
+
+
 
 end
