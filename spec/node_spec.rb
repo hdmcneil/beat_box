@@ -1,9 +1,9 @@
 require './lib/node'
 require 'pry'
-require 'rspec'
 
-describe 'node' do
-  it 'has a node' do
+Rspec.describe Node do
+  describe '#initialize' do
+  it 'has a new Node object' do
   node = Node.new("plop")
   expect(node).to be_instance_of(Node)
   end

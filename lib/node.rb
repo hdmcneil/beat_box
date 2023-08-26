@@ -1,5 +1,5 @@
 class Node
-  attr_accessor :data, :next
+  attr_accessor :data
 
   def initialize(data)
     @data = data
@@ -11,12 +11,3 @@ class Node
   end
 end
 
-class LinkedList
-  attr_accessor :head
-
-  def initialize
-  
-  end
-
-
-end
