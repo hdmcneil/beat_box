@@ -11,13 +11,14 @@ class LinkedList
   end
 
   def append(value)
-    if 
-      @head.nil?
-      @head = Node.new(value)
+    if @head.nil? # if head = nil
+      @head = Node.new(value) # the new node is the head
     else
-      last_node = @head
-      while(last_node.next_node.nil? != true)
+      last_node = @head # last node is the head
+      while last_node.next_node # loop until last node = nil
+        last_node = last_node.next_node # point to next node
       end
+      last_node.next_node = Node.new(value) #next node
     end
   end
 
