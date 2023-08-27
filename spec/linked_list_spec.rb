@@ -154,6 +154,24 @@ end
       expect(@list.includes?("dep")).to be(false)
     end
 
+    it 'it removes last element returns value removed' do
+      expect(@list).to be_instance_of(LinkedList)
+      @list.append("woo")
+      @list.prepend("deep")
+      @list.append("shi")
+      @list.append("blop")
+      @list.insert(3, "shu")
+      expect(@list.to_string).to eq("deep woo shi shu blop")
+      expect(@list.find(2,1)).to eq(["shi"])
+      string = @list.find(1,3)
+      expect(string.join(' ')).to eq("woo shi shu")
+      expect(@list.includes?("deep")).to be(true)
+      expect(@list.includes?("dep")).to be(false)
+      expect(@list.pop).to eq("blop")
+      expect(@list.pop).to eq("shu")
+      expect(@list.to_string).to eq("deep woo shi")
+    end
+
 
 end
 end
