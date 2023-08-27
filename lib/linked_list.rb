@@ -54,7 +54,21 @@ class LinkedList
     end
   end
 
+  def find(index_position, num_elements_return)
+    return nil if index_position < 0 || num_elements_return <= 0
+    
+    node = node_at(index_position)
+    return nil if node.nil? # return nil if there aren't any nodes
   
+    elements = [] #create an array to hold elements returned
+    num_elements_return.times do #iterate through linked list
+      break if node.nil?  #until reaches nil
+      elements << node.data # move node data into elements array
+      node = node.next_node #update node so that we can traverse list
+    end
+  
+    elements # return the elements
+  end
 
   def insert(index, node_data)
     new_node = Node.new(node_data)
