@@ -41,12 +41,44 @@ class LinkedList
       result += " #{node.data}" #adds the data from the current 'node' to the 'result ' string sperated by a space
     end
     result
+    
+  end
+
+  def prepend(value) # add nodes to the beginning of the list
+  new_node = Node.new(value)
+    if @head.nil? #if head is nil (empty) 
+      @head = new_node #the new node becomes the head
+    else
+      new_node.next_node = @head #else set the next_node of the new node to be the head
+      @head = new_node # update the head to the new node
+    end
   end
 
   
-    
 
+  def insert(index, node_data)
+    new_node = Node.new(node_data)
 
+    if index == 0
+      new_node.next_node = @head # set as head and adjust pointers
+      @head = new_node #update head to new node
+    else
+      previous_node = node_at(index -1) #locate node node before index
+      new_node.next_node = previous_node.next_node #adjust pointer so that new nodode is pointing at node that previously was in dex position
+      previous_node.next_node = new_node # adjust pointer for node before index point to new node
+    end
+  end
 
+  private 
+  def node_at(index)
+    return nil if index < 0 #return nil if negative
+
+    node = @head #start at head
+    index.times do #iterate through linked list 'index' times to arrive at correct index
+      return nil if node.nil?
+      node = node.next_node #move to the next node in list
+    end
+    node
+  end
 
 end
