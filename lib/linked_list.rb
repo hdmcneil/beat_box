@@ -70,6 +70,22 @@ class LinkedList
     elements # return the elements
   end
 
+  def includes?(value)
+    if
+      @head.nil?
+      false  # if linked list empty return false
+    else
+      node = @head # start at head
+      while node #iterate 
+        if (node.data == value)
+         return true # if value found exit loop and return true
+        end
+        node = node.next_node #move to the next node
+      end
+      false # if value not found return false
+    end
+  end
+
   def insert(index, node_data)
     new_node = Node.new(node_data)
 
