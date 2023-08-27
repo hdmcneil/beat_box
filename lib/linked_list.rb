@@ -23,13 +23,13 @@ class LinkedList
   end
 
   def count
-    count = 0
-    last_node = @head
-    until last_node.nil?
-      count += 1
-      last_node = last_node.next_node
+    count = 0 #initalize variable and sart at zero
+    last_node = @head #starting point for loop
+    until last_node.nil? #iterates until nil(no more nodes)
+      count += 1 #increments count by one for each node
+      last_node = last_node.next_node #updates last_node to point to the next node to move forward in loop
     end
-    count
+    count # returns value of count
   end
   
   def to_string
@@ -84,6 +84,33 @@ class LinkedList
       end
       false # if value not found return false
     end
+  end
+
+  def pop #method removes last element from linked list and returns it
+    return nil if @head.nil? #if head is nil return empty list and don't do anything
+
+    if@head.next_node.nil?
+      value_removed = @head.data # store value of only node
+      @head = nil # if only one node, empty list
+    else
+      current_node = @head
+      previous_node = nil 
+      #intialize current_node and previous_node of nodes in iteration
+
+      until current_node.next_node.nil? 
+        #iterate until last node
+        previous_node = current_node 
+        #update pointer
+        current_node = current_node.next_node
+        #moves current node to next_node in linked list to move through iteration
+      end
+
+      value_removed = current_node.data 
+      #store value of the last node
+      previous_node.next_node = nil
+      #updates 2nd to last node to point to nil -removes from list
+    end
+    value_removed #return calue that was removed
   end
 
   def insert(index, node_data)
