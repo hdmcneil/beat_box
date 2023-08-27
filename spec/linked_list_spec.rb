@@ -18,9 +18,11 @@ RSpec.describe LinkedList do
   end
 
 
-  it 'has data value for 1st node' do
+  describe "#append" do
+  it 'adds a new node to the list' do
     @list.append("doop")
-    @list
+    expect(@list.head.data).to eq("doop")
+    expect(@list.head.next_node).to eq(nil)
     expect(@list).to be_instance_of(LinkedList)
   end
 
@@ -50,11 +52,7 @@ end
   it 'has a head equal to "doop"' do
     @list.append("doop")
     expect(@list.head.data).to eq("doop")
-  end
-
-  it 'has a list with the node "doop"' do
-    @list.append("doop")
-    expect(@list).to be_instance_of(LinkedList)
+    expect(@list.head.next_node).to eq(nil)
   end
 
   it 'has a head with value "doop"' do
@@ -76,24 +74,57 @@ end
     it 'appended the node "deep"' do
       @list.append("doop")
       @list.append("deep")
-      expect(@list).to be_instance_of(LinkedList)
+      expect(@list.head.data).to eq("doop")
+      expect(@list.head.next_node.data).to eq("deep")
+      expect(@list.to_string).to eq("doop deep")
+      expect(@list.count).to eq(2)
     end
 
-    it 'has a list that includes "deep" & "doop"' do
-      @list.append("doop")
-      @list.append("deep")
-      expect(@list).to be_instance_of(LinkedList)
+  
+    describe 'prepend & insert' do
+      it 'adds a node "plop"' do
+        @list = LinkedList.new
+        expect(@list).to be_instance_of(LinkedList)
+        @list.append("plop")
+        expect(@list.head.next_node).to eq(nil)
+        expect(@list.head.data).to eq("plop")
+        expect(@list.to_string).to eq("plop")
+        expect(@list.count).to eq(1)
+      end
     end
 
-    # it 'has next node of "deep"' do
-    #   @list.append("doop")
-    #   @list.append("deep")
-      
-    #   last = @list.last_node
-    #   expect(@list.head.next_node).to eq(last.data)
-    # end
+      it 'has a node named "suu"' do
+        expect(@list).to be_instance_of(LinkedList)
+        @list.append("plop")
+        @list.append("suu")
+        expect(@list.head.next_node.data).to eq("suu")
+        expect(@list.head.data).to eq("plop")
+        expect(@list.to_string).to eq("plop suu")
+        expect(@list.count).to eq(2)
+    end
 
-    describe 'Iteration 2'
+    it 'prepend/adds "dop" to beginning' do
+      expect(@list).to be_instance_of(LinkedList)
+        @list.append("plop")
+        @list.append("suu")
+        @list.prepend("dop")
+        expect(@list.head.next_node.data).to eq("plop")
+        expect(@list.head.data).to eq("dop")
+        expect(@list.to_string).to eq("dop plop suu")
+        expect(@list.count).to eq(3)
+    end
+
+    it 'inserts a node in the linked list' do
+      expect(@list).to be_instance_of(LinkedList)
+        @list.append("plop")
+        @list.append("suu")
+        @list.prepend("dop")
+        @list.insert(1, "woo")
+        expect(@list.head.data).to eq("dop")
+        expect(@list.to_string).to eq("dop woo plop suu")
+        expect(@list.count).to eq(4)
+    end
+
 end
 end
-
+end
