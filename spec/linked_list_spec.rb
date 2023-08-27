@@ -125,6 +125,21 @@ end
         expect(@list.count).to eq(4)
     end
 
+    it 'finds a node in a linked list' do
+      expect(@list).to be_instance_of(LinkedList)
+      @list.append("woo")
+      @list.prepend("deep")
+      @list.append("shi")
+      @list.append("blop")
+      @list.insert(3, "shu")
+      @list.to_string
+      @list.find(2,1)
+      expect(@list.to_string).to eq("deep woo shi shu blop")
+      expect(@list.find(2,1)).to eq(["shi"])
+      string = @list.find(1,3)
+      expect(string.join(' ')).to eq("woo shi shu")
+    end
+
 end
 end
 end
