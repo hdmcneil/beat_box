@@ -9,6 +9,8 @@ RSpec.describe BeatBox do
 
   describe '#initialize' do
   it 'has a linked list that is empty' do
+    expect(@bb).to be_instance_of(BeatBox)
+    
 
   end
 
