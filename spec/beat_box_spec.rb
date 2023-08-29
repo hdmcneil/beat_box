@@ -30,5 +30,12 @@ RSpec.describe BeatBox do
       @bb.play
     end
 
+    it 'can validate and add beats' do
+      @bb.append("deep")
+      @bb.append("Mississippi")
+      expect(@bb.all).to eq("deep")
+      @bb.prepend("tee tee tee Mississippi")
+      expect(@bb.all).to eq("tee tee tee deep")
+    end
 
 end
