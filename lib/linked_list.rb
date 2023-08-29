@@ -25,10 +25,10 @@ class LinkedList
   def count
     count = 0 #initalize variable and sart at zero
     last_node = @head #starting point for loop
-    until last_node.nil? #iterates until nil(no more nodes)
-      count += 1 #increments count by one for each node
-      last_node = last_node.next_node #updates last_node to point to the next node to move forward in loop
-    end
+      until last_node.nil? #iterates until nil(no more nodes)
+        count += 1 #increments count by one for each node
+        last_node = last_node.next_node #updates last_node to point to the next node to move forward in loop
+      end
     count # returns value of count
   end
   
@@ -36,36 +36,40 @@ class LinkedList
     return '' if @head.nil? #If the list is empty, return an empty string
     node = @head #temp variable that starts head of linked list
     result = "#{node.data}" #Start with the data from the head node
-    while node.next_node #initiates while loop as long has 'node' has a next_node
-      node = node.next_node #updates node to point to the new node
-      result += " #{node.data}" #adds the data from the current 'node' to the 'result ' string sperated by a space
-    end
+      while node.next_node #initiates while loop as long has 'node' has a next_node
+        node = node.next_node #updates node to point to the new node
+        result += " #{node.data}" #adds the data from the current 'node' to the 'result ' string sperated by a space
+      end
     result
     
   end
 
   def prepend(value) # add nodes to the beginning of the list
-  new_node = Node.new(value)
-    if @head.nil? #if head is nil (empty) 
-      @head = new_node #the new node becomes the head
-    else
-      new_node.next_node = @head #else set the next_node of the new node to be the head
+    new_node = Node.new(value)
+      if @head.nil? #if head is nil (empty) 
+        @head = new_node #the new node becomes the head
+      else
+       new_node.next_node = @head 
+       #else set the next_node of the new node to be the head
       @head = new_node # update the head to the new node
-    end
+      end
   end
 
   def find(index_position, num_elements_return)
     return nil if index_position < 0 || num_elements_return <= 0
     
     node = node_at(index_position)
-    return nil if node.nil? # return nil if there aren't any nodes
+    return nil if node.nil? 
+    # return nil if there aren't any nodes
   
     elements = [] #create an array to hold elements returned
     num_elements_return.times do #iterate through linked list
       break if node.nil?  #until reaches nil
-      elements << node.data # move node data into elements array
-      node = node.next_node #update node so that we can traverse list
-    end
+        elements << node.data 
+        # move node data into elements array
+        node = node.next_node 
+        #update node so that we can traverse list
+      end
   
     elements # return the elements
   end
@@ -86,8 +90,10 @@ class LinkedList
     end
   end
 
-  def pop #method removes last element from linked list and returns it
-    return nil if @head.nil? #if head is nil return empty list and don't do anything
+  def pop 
+    #method removes last element from linked list and returns it
+    return nil if @head.nil? 
+    #if head is nil return empty list and don't do anything
 
     if@head.next_node.nil?
       value_removed = @head.data # store value of only node
