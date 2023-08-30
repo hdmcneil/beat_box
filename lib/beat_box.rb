@@ -45,7 +45,7 @@ class BeatBox
 
     if valid_beats.include?(value)
       case operation 
-        #flow control statement to execute on operation parament :append or :prepend
+        #case (replaces if else statement) is flow control statement to execute code blocks on operation parameters :append or :prepend
       when :append
         @list.append(value)
       when :prepend

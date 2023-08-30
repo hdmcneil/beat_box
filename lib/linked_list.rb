@@ -11,7 +11,7 @@ class LinkedList
   end
 
   def append(value)
-    if @head.nil? # if head = nil
+    if @head.nil? # if head = nil 
       @head = Node.new(value) # the new node is the head
     else
       last_node = @head # last node is the head
@@ -23,7 +23,7 @@ class LinkedList
   end
 
   def count
-    count = 0 #initalize variable and sart at zero
+    count = 0 #initalize variable and start at zero
     last_node = @head #starting point for loop
       until last_node.nil? #iterates until nil(no more nodes)
         count += 1 #increments count by one for each node
@@ -50,8 +50,8 @@ class LinkedList
         @head = new_node #the new node becomes the head
       else
        new_node.next_node = @head 
-       #else set the next_node of the new node to be the head
-      @head = new_node # update the head to the new node
+       #else set the new_node point to of the next node
+      @head = new_node # update the new_node to be the head
       end
   end
 
@@ -60,10 +60,9 @@ class LinkedList
     
     node = node_at(index_position)
     return nil if node.nil? 
-    # return nil if there aren't any nodes
-  
+    # return nil if there aren't any nodes at that index
     elements = [] #create an array to hold elements returned
-    num_elements_return.times do #iterate through linked list
+    num_elements_return.times do #traverse through linked list
       break if node.nil?  #until reaches nil
         elements << node.data 
         # move node data into elements array
@@ -80,7 +79,7 @@ class LinkedList
       false  # if linked list empty return false
     else
       node = @head # start at head
-      while node #iterate 
+      while node #traverse 
         if (node.data == value)
          return true # if value found exit loop and return true
         end
@@ -95,7 +94,7 @@ class LinkedList
     return nil if @head.nil? 
     #if head is nil return empty list and don't do anything
 
-    if@head.next_node.nil?
+    if @head.next_node.nil?
       value_removed = @head.data # store value of only node
       @head = nil # if only one node, empty list
     else
@@ -127,8 +126,8 @@ class LinkedList
       @head = new_node #update head to new node
     else
       previous_node = node_at(index -1) #locate node node before index
-      new_node.next_node = previous_node.next_node #adjust pointer so that new nodode is pointing at node that previously was in dex position
-      previous_node.next_node = new_node # adjust pointer for node before index point to new node
+      new_node.next_node = previous_node.next_node #adjust pointer so that new node is pointing at node that previously was in index position
+      previous_node.next_node = new_node # adjust pointer for node before index to point to new node
     end
   end
 
